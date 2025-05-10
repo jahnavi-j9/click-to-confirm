@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Do You Love Me?</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    #question {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px #fff;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      font-size: 1.3em;
+      cursor: pointer;
+      border: none;
+      border-radius: 30px;
+      transition: 0.3s ease;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      position: absolute;
+    }
+
+    #yesBtn {
+      background-color: #28a745;
+      color: white;
+      left: 40%;
+      top: 55%;
+    }
+
+    #yesBtn:hover {
+      background-color: #218838;
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background-color: #dc3545;
+      color: white;
+      left: 52%;
+      top: 55%;
+    }
+
+    #thankyou {
+      display: none;
+      font-size: 2em;
+      color: #e60073;
+      font-weight: bold;
+      animation: fadeIn 1s ease-in-out;
+      text-shadow: 2px 2px #fff;
+      margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="question">Do you love me?</div>
+
+  <button class="btn" id="yesBtn">Yes</button>
+  <button class="btn" id="noBtn">No</button>
+
+  <div id="thankyou">Love you tooooo.....! ❤️</div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const thankYou = document.getElementById('thankyou');
+    const question = document.getElementById('question');
+
+    // No button escapes when hovered
+    noBtn.addEventListener('mouseenter', () => {
+      const x = Math.random() * (window.innerWidth - 150);
+      const y = Math.random() * (window.innerHeight - 150);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    // Yes button shows thank you
+    yesBtn.addEventListener('click', () => {
+      question.style.display = 'none';
+      yesBtn.style.display = 'none';
+      noBtn.style.display = 'none';
+      thankYou.style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
